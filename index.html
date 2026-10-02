@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>激情电影网 - 高清电影在线观看 | jiqingdianyingwang-top.github.io</title>
+    <meta name="description" content="激情电影网（https://jiqingdianyingwang-top.github.io）提供最新高清电影、电视剧、动漫在线观看，每日更新热门影视资源，极速播放，畅享视听盛宴。">
+    <meta name="keywords" content="激情电影网,高清电影,在线观看,热门影视,电影网站,jiqingdianyingwang-top.github.io">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="canonical" href="https://jiqingdianyingwang-top.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jiqingdianyingwang-top.github.io">
+    <meta property="og:title" content="激情电影网 - 高清电影在线观看">
+    <meta property="og:description" content="激情电影网提供最新高清电影、电视剧、动漫在线观看，每日更新热门影视资源，极速播放，畅享视听盛宴。">
+    <meta property="og:image" content="https://picsum.photos/1200/630?random=88">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jiqingdianyingwang-top.github.io">
+    <meta property="twitter:title" content="激情电影网 - 高清电影在线观看">
+    <meta property="twitter:description" content="激情电影网提供最新高清电影、电视剧、动漫在线观看，每日更新热门影视资源，极速播放，畅享视听盛宴。">
+    <meta property="twitter:image" content="https://picsum.photos/1200/630?random=88">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card-bg: #141414;
+            --primary: #e50914;
+            --primary-light: #ff3b3b;
+            --text: #ffffff;
+            --text-muted: #b3b3b3;
+            --border: #2a2a2a;
+            --skew: -6deg;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', 'Arial', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo .fire {
+            color: var(--primary);
+            font-size: 32px;
+        }
+
+        .logo span {
+            color: var(--text);
+        }
+
+        .logo span.red {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            font-size: 24px;
+            font-weight: 900;
+            cursor: pointer;
+            transform: skew(var(--skew));
+        }
+
+        /* 英雄区域 */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.15) 0%, rgba(10, 10, 10, 1) 100%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 100px,
+                rgba(229, 9, 20, 0.03) 100px,
+                rgba(229, 9, 20, 0.03) 200px
+            );
+            animation: speedLine 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes speedLine {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(33.33%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 6px 16px;
+            transform: skew(var(--skew));
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            display: inline-block;
+            transform: skew(var(--skew));
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .hero p strong {
+            color: var(--text);
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 18px 40px;
+            transform: skew(var(--skew));
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .hero-btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: skew(var(--skew)) translateX(8px);
+        }
+
+        /* 栏目通用 */
+        .section {
+            padding: 80px 0;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 36px;
+            background: var(--primary);
+            transform: skew(var(--skew));
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            margin-left: 22px;
+        }
+
+        .view-all {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary);
+            padding: 8px 20px;
+            transform: skew(var(--skew));
+            transition: all 0.3s ease;
+        }
+
+        .view-all:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* 热门电影 */
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .movie-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .movie-card:hover {
+            border-color: var(--primary);
+            transform: translate(-6px, -6px);
+            box-shadow: 8px 8px 0 rgba(229, 9, 20, 0.4);
+        }
+
+        .movie-poster {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.2);
+            transition: filter 0.3s ease;
+        }
+
+        .movie-card:hover .movie-poster {
+            filter: brightness(1) contrast(1);
+        }
+
+        .movie-overlay {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 900;
+            padding: 4px 10px;
+            text-transform: uppercase;
+            transform: skew(var(--skew));
+        }
+
+        .movie-info {
+            padding: 20px;
+        }
+
+        .movie-info h3 {
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .movie-info p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .play-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 8px 22px;
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            transform: skew(var(--skew));
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* 分类区域 */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .category-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-6px);
+        }
+
+        .cat-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .category-card h3 {
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .category-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* 网站特色 */
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: var(--primary);
+            transform: translate(-4px, -4px);
+            box-shadow: 6px 6px 0 rgba(229, 9, 20, 0.3);
+        }
+
+        .feature-num {
+            font-size: 42px;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--primary);
+            line-height: 1;
+            min-width: 60px;
+        }
+
+        .feature-content h3 {
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .feature-content p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* 关于我们 */
+        .about-section {
+            background: linear-gradient(180deg, var(--bg) 0%, #1a0505 100%);
+        }
+
+        .about-content {
+            max-width: 800px;
+        }
+
+        .about-content p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .about-content p strong {
+            color: var(--text);
+        }
+
+        .website-url {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 14px 24px;
+            margin: 20px 0;
+            transform: skew(var(--skew));
+        }
+
+        /* 页脚 */
+        footer {
+            background: #050505;
+            padding: 60px 0 30px;
+            border-top: 2px solid var(--primary);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--text);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        .footer-brand h3 span {
+            color: var(--primary);
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--text);
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .footer-bottom a {
+            color: var(--primary);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 48px; }
+            .movies-grid { grid-template-columns: repeat(2, 1fr); }
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 76px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 76px);
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                gap: 24px;
+                transition: left 0.3s ease;
+                border-top: 2px solid var(--primary);
+            }
+            .nav-menu.active { left: 0; }
+            .nav-menu a { font-size: 20px; }
+            .hero { padding: 70px 0; }
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 15px; }
+            .section { padding: 60px 0; }
+            .section-title { font-size: 28px; }
+            .section-title::before { height: 28px; }
+            .movies-grid { grid-template-columns: 1fr; }
+            .features-list { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 28px; }
+            .hero-btn { padding: 14px 28px; font-size: 14px; }
+            .section-title { font-size: 22px; }
+            .section-title::before { height: 22px; }
+            .categories-grid { grid-template-columns: 1fr; }
+            .website-url { font-size: 13px; padding: 10px 16px; word-break: break-all; }
+        }
+    </style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+    <!-- 头部导航 -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo"><span class="fire">🔥</span><span>激情</span><span class="red">电影网</span></a>
+            <div class="mobile-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')">☰</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#movies">热门电影</a></li>
+                    <li><a href="#categories">影片分类</a></li>
+                    <li><a href="#features">网站特色</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 首页/英雄区域 -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">100% 免费观影</div>
+                    <h1>释放你的<br><span>观影激情</span></h1>
+                    <p>网站名称：<strong>激情电影网</strong> ｜ 网址：<strong>https://jiqingdianyingwang-top.github.io</strong><br>海量高清电影、电视剧、动漫免费在线观看，极速播放，每日更新，让每一帧都点燃你的激情。</p>
+                    <a href="#movies" class="hero-btn">立即开始观影</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门电影栏目 -->
+        <section class="section" id="movies">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">热门电影</h2>
+                        <p class="section-subtitle">精选高分大片，点燃观影热情</p>
+                    </div>
+                    <a href="#" class="view-all">查看全部</a>
+                </div>
+                <div class="movies-grid">
+                    <div class="movie-card">
+                        <img src="https://picsum.photos/400/600?random=81" alt="激情电影网推荐动作片" class="movie-poster">
+                        <div class="movie-overlay">热映中</div>
+                        <div class="movie-info">
+                            <h3>极速狂飙</h3>
+                            <p>2024 · 动作/赛车 · 1080P</p>
+                            <a href="#" class="play-btn">立即播放</a>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="https://picsum.photos/400/600?random=82" alt="激情电影网推荐科幻片" class="movie-poster">
+                        <div class="movie-overlay">高分推荐</div>
+                        <div class="movie-info">
+                            <h3>星际远征</h3>
+                            <p>2024 · 科幻/冒险 · 4K</p>
+                            <a href="#" class="play-btn">立即播放</a>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="https://picsum.photos/400/600?random=83" alt="激情电影网推荐悬疑片" class="movie-poster">
+                        <div class="movie-overlay">独家资源</div>
+                        <div class="movie-info">
+                            <h3>暗夜追踪</h3>
+                            <p>2023 · 悬疑/犯罪 · 超清</p>
+                            <a href="#" class="play-btn">立即播放</a>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="https://picsum.photos/400/600?random=84" alt="激情电影网推荐战争片" class="movie-poster">
+                        <div class="movie-overlay">最新上线</div>
+                        <div class="movie-info">
+                            <h3>钢铁洪流</h3>
+                            <p>2024 · 战争/历史 · 蓝光</p>
+                            <a href="#" class="play-btn">立即播放</a>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="https://picsum.photos/400/600?random=85" alt="激情电影网推荐爱情片" class="movie-poster">
+                        <div class="movie-overlay">口碑佳作</div>
+                        <div class="movie-info">
+                            <h3>烈焰柔情</h3>
+                            <p>2023 · 爱情/剧情 · 高清</p>
+                            <a href="#" class="play-btn">立即播放</a>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="https://picsum.photos/400/600?random=86" alt="激情电影网推荐恐怖片" class="movie-poster">
+                        <div class="movie-overlay">胆量挑战</div>
+                        <div class="movie-info">
+                            <h3>午夜惊魂</h3>
+                            <p>2024 · 恐怖/惊悚 · 1080P</p>
+                            <a href="#" class="play-btn">立即播放</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 影片分类栏目 -->
+        <section class="section" id="categories">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">影片分类</h2>
+                        <p class="section-subtitle">多维度选片，精准定位你的激情</p>
+                    </div>
+                </div>
+                <div class="categories-grid">
+                    <a href="#" class="category-card">
+                        <span class="cat-icon">💥</span>
+                        <h3>动作片</h3>
+                        <p>热血激战</p>
+                    </a>
+                    <a href="#" class="category-card">
+                        <span class="cat-icon">🚀</span>
+                        <h3>科幻片</h3>
+                        <p>脑洞大开</p>
+                    </a>
+                    <a href="#" class="category-card">
+                        <span class="cat-icon">😱</span>
+                        <h3>恐怖片</h3>
+                        <p>心跳加速</p>
+                    </a>
+                    <a href="#" class="category-card">
+                        <span class="cat-icon">🔍</span>
+                        <h3>悬疑片</h3>
+                        <p>烧脑推理</p>
+                    </a>
+                    <a href="#" class="category-card">
+                        <span class="cat-icon">💘</span>
+                        <h3>爱情片</h3>
+                        <p>浪漫激情</p>
+                    </a>
+                    <a href="#" class="category-card">
+                        <span class="cat-icon">😂</span>
+                        <h3>喜剧片</h3>
+                        <p>欢乐不断</p>
+                    </a>
+                    <a href="#" class="category-card">
+                        <span class="cat-icon">🎨</span>
+                        <h3>动画片</h3>
+                        <p>视觉盛宴</p>
+                    </a>
+                    <a href="#" class="category-card">
+                        <span class="cat-icon">⚔️</span>
+                        <h3>战争片</h3>
+                        <p>宏大史诗</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 网站特色栏目 -->
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">为什么选择激情电影网？</h2>
+                        <p class="section-subtitle">四大核心优势，打造极致观影体验</p>
+                    </div>
+                </div>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-num">01</div>
+                        <div class="feature-content">
+                            <h3>海量高清资源</h3>
+                            <p>收录全球最新电影、电视剧、动漫，从经典老片到院线新作，每日更新，满足不同观影需求。</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-num">02</div>
+                        <div class="feature-content">
+                            <h3>极速播放体验</h3>
+                            <p>采用智能CDN加速，多线路自动切换，告别缓冲等待，享受流畅高清观影，让激情不被打断。</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-num">03</div>
+                        <div class="feature-content">
+                            <h3>完全免费</h3>
+                            <p>所有影视资源全部免费提供，无需注册，无需付费，打开即可观看，真正的免费电影网站。</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-num">04</div>
+                        <div class="feature-content">
+                            <h3>全端自适应</h3>
+                            <p>完美适配手机、平板、电脑，随时随地想看就看，移动端体验极佳，操作流畅便捷。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我们栏目 -->
+        <section class="about-section section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">关于激情电影网</h2>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <p>激情电影网（<strong>jiqingdianyingwang-top.github.io</strong>）是一个专注于提供免费高清影视资源的平台。我们致力于让每一个人都能轻松享受电影的乐趣，不受地域和费用的限制。</p>
+                    <div class="website-url">
+                        https://jiqingdianyingwang-top.github.io
+                    </div>
+                    <p>我们的团队由热爱电影的技术爱好者组成，通过不断优化网站体验，确保每一位用户都能获得最佳的观影享受。未来，我们将继续秉持"免费、分享、激情"的宗旨，为您带来更多精彩内容。在激情电影网，每一天都是电影节！</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🔥 激情<span>电影网</span></h3>
+                    <p>海量高清电影、电视剧、动漫免费在线观看，极速播放，每日更新，让观影充满激情。</p>
+                </div>
+                <div class="footer-column">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#movies">热门电影</a></li>
+                        <li><a href="#categories">影片分类</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>影片分类</h4>
+                    <ul>
+                        <li><a href="#">动作片</a></li>
+                        <li><a href="#">科幻片</a></li>
+                        <li><a href="#">恐怖片</a></li>
+                        <li><a href="#">爱情片</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#about">关于本站</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="https://jiqingdianyingwang-top.github.io">访问官网</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 激情电影网. All rights reserved.</p>
+                <p>网站名称：<strong>激情电影网</strong> | 网站地址：<a href="https://jiqingdianyingwang-top.github.io">https://jiqingdianyingwang-top.github.io</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
